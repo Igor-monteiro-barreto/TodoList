@@ -15,23 +15,23 @@ public class TodoController {
         this.todoService = todoService;
     }
     //Criação de endinpoints
-    @PostMapping
+    @PostMapping("/create")
     List<Todo> create(@RequestBody Todo todo){
         return todoService.create(todo);
     }
     //TODO Depois vou testar colocar umas rotas aqui
-    @GetMapping
+    @GetMapping("/findAll")
     List<Todo> findAll(){
         return todoService.findAll();
     }
-    @PutMapping
+    @PutMapping("/update")
     List<Todo> update(Todo todo){
         return todoService.updade(todo);
     }
 
     // Estará pronto na requisição quando você colocar na
     // localhost:8080/todo/1
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     List<Todo> delete(@PathVariable("id") Long id){
         return todoService.delete(id);
     }
