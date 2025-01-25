@@ -2,6 +2,7 @@ package com.dev.IgorMonteiro.Todolist.Controller;
 
 import com.dev.IgorMonteiro.Todolist.Model.Todo;
 import com.dev.IgorMonteiro.Todolist.Service.TodoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class TodoController {
     }
     //Criação de endinpoints
     @PostMapping("/create")
-    List<Todo> create(@RequestBody Todo todo){
+    List<Todo> create(@RequestBody @Valid Todo todo){
         return todoService.create(todo);
     }
     //TODO Depois vou testar colocar umas rotas aqui
