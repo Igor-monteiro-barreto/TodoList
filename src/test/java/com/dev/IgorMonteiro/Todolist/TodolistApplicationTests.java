@@ -9,32 +9,31 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TodolistApplicationTests {
 	@Autowired
-	private WebTestClient webTesteClient;
+	private WebTestClient webTestClient;
 
 	//Teste triplo A, Assert Act e A
 	@Test
 	void TesteTodoCreateSucess () {
 	var todo = new Todo("Todo teste","Todo descrição",true,1);
-		WebTestClient.BodyContentSpec $ = webTesteClient
+		WebTestClient.BodyContentSpec $ = webTestClient
 				.post()
-				.uri("todos/create")
+				.uri("/todos/create")
 				.bodyValue(todo)
 				.exchange()
 				.expectStatus().isOk()
 				.expectBody()
 				.jsonPath("$").isArray()
-				.jsonPath("$.lenght()").isEqualTo(1)
-				.jsonPath("$[0].name()").isEqualTo(todo.getName())
-				.jsonPath("$[0].descricao()").isEqualTo(todo.getDescricao())
-				.jsonPath("$[0].realizado()").isEqualTo(todo.isRealizado())
-				.jsonPath("$[0].prioridade()").isEqualTo(todo.getPrioridade());
-
+				.jsonPath("$.length()").isEqualTo(1)
+				.jsonPath("$[0].name").isEqualTo(todo.getName())
+				.jsonPath("$[0].descricao").isEqualTo(todo.getDescricao())
+				.jsonPath("$[0].realizado").isEqualTo(todo.isRealizado())
+				.jsonPath("$[0].prioridade").isEqualTo(todo.getPrioridade());
 	}
 	@Test
 	void TesteTodoCreateFalure () {
-		webTesteClient
+		webTestClient
 				.post()
-				.uri("todos/create")
+				.uri("/todos/create")
 				.bodyValue(
 				new Todo("","",false,0))
 				.exchange()

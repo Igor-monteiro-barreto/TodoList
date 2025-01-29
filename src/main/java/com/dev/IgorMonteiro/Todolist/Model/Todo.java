@@ -1,7 +1,9 @@
 package com.dev.IgorMonteiro.Todolist.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "todos")
@@ -12,8 +14,9 @@ public class Todo {
     private String name;
     @NotBlank
     private String descricao;
-    @NotBlank
+    @NotNull
     private boolean realizado;
+    @Min(value = 1)
     private int prioridade;
 
     public Todo(String name, String descricao, boolean realizado, int prioridade ){

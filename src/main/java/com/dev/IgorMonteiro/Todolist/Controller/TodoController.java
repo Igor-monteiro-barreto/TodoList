@@ -26,7 +26,7 @@ public class TodoController {
         return todoService.findAll();
     }
     @PutMapping("/update")
-    List<Todo> update(Todo todo){
+    List<Todo> update(@RequestBody @Valid Todo todo){
         return todoService.updade(todo);
     }
 
