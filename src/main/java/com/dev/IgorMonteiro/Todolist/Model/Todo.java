@@ -25,6 +25,8 @@ public class Todo {
         this.realizado = realizado;
         this.prioridade = prioridade;
     }
+    public Todo() {
+    }
 
     public Long getId() {
         return id;

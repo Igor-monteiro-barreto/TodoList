@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/todos")
 
 public class TodoController {
-    private TodoService todoService;
+    private final TodoService todoService;
     public TodoController(TodoService todoService){
         this.todoService = todoService;
     }
@@ -27,7 +27,7 @@ public class TodoController {
     }
     @PutMapping("/update")
     List<Todo> update(@RequestBody @Valid Todo todo){
-        return todoService.updade(todo);
+        return todoService.update(todo);
     }
 
     // Estará pronto na requisição quando você colocar na
